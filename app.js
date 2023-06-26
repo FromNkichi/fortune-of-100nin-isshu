@@ -1,8 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            title: 'ストップボタンで 1 首選ぼう',
-            stopTitle: 'あなたが選んだ 1 首は…',
+            Title: 'ストップボタンで 1 首選ぼう',
+            stopTitle: '今日の百人一首',
             randomNumber: null,
             intervalId: null,
             isStarted: false,
@@ -14,16 +14,24 @@ const app = Vue.createApp({
         start() {
             this.isStarted = true;
             this.isStopped = false;
+            this.randomNumber = 1;
+            /*
             this.intervalId = setInterval(() => {
                 this.randomNumber = Math.floor(Math.random() * 100) + 1;
             }, 100);
+            */
         },
         stop() {
             this.isStarted = false;
             this.isStopped = true;
-            const selectedItem = this.items.find((item) => item.no === this.randomNumber);
-            this.title = selectedItem.title;
-            this.description = selectedItem.description;
+            const selectedItem = this.items.find((item) => item.No === this.randomNumber);
+            console.log(selectedItem);
+            this.Poet = selectedItem.Poet;
+            this.Author = selectedItem.Author;
+            this.Description = selectedItem.Description;
+            this.ColorName = selectedItem.ColorName;
+            this.ColorCode = selectedItem.ColorCode;
+            this.ImagePath = selectedItem.ImagePath;
         },
         goHome() {
             this.isStarted = false;
@@ -37,8 +45,9 @@ const app = Vue.createApp({
         const rows = csvData.split('\n');
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i].split(',');
-            if (row.length === 3) {
-                this.items.push({ no: parseInt(row[0]), title: row[1], description: row[2] });
+            console.log(row);
+            if (row.length === 7) {
+                this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: row[5], ImagePath: row[6] });
             }
         }
     },
