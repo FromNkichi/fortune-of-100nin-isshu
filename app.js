@@ -7,6 +7,7 @@ const app = Vue.createApp({
             intervalId: null,
             isStarted: false,
             isStopped: false,
+            showImage: false,
             items: []
         };
     },
@@ -14,16 +15,16 @@ const app = Vue.createApp({
         start() {
             this.isStarted = true;
             this.isStopped = false;
-            this.randomNumber = 1;
-            /*
+            this.showImage = true;
+            //this.randomNumber = 1;
             this.intervalId = setInterval(() => {
-                this.randomNumber = Math.floor(Math.random() * 100) + 1;
+                this.randomNumber = Math.floor(Math.random() * 16) + 1;
             }, 100);
-            */
         },
         stop() {
             this.isStarted = false;
             this.isStopped = true;
+            this.showImage = false;
             const selectedItem = this.items.find((item) => item.No === this.randomNumber);
             console.log(selectedItem);
             this.Poet = selectedItem.Poet;
@@ -37,6 +38,9 @@ const app = Vue.createApp({
             this.isStarted = false;
             this.isStopped = false;
             this.randomNumber = null;
+        },
+        splitPoet: function() {
+            return this.Poet.split(' ');
         }
     },
     async mounted() {
@@ -45,9 +49,8 @@ const app = Vue.createApp({
         const rows = csvData.split('\n');
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i].split(',');
-            console.log(row);
             if (row.length === 7) {
-                this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: row[5], ImagePath: row[6] });
+                this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: "#"+row[5], ImagePath: "images/"+row[6]+".jpg" });
             }
         }
     },
