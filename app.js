@@ -37,6 +37,9 @@ const app = Vue.createApp({
                 case this.Description.length > 44:
                     document.documentElement.style.setProperty('--font-size', '4.3vw');
                     break;
+                case this.Description.length > 34:
+                    document.documentElement.style.setProperty('--font-size', '4.6vw');
+                    break;                    
                 default:
                     document.documentElement.style.setProperty('--font-size', '5vw');                
             }
