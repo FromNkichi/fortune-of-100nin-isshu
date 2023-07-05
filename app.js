@@ -39,14 +39,17 @@ const app = Vue.createApp({
                 case this.Description.length > 80:
                     document.documentElement.style.setProperty('--font-size', '4vw');
                     break;
+                case this.Description.length > 78:
+                    document.documentElement.style.setProperty('--font-size', '4.1vw');
+                    break;
                 case this.Description.length > 44:
                     document.documentElement.style.setProperty('--font-size', '4.3vw');
                     break;
                 case this.Description.length > 34:
                     document.documentElement.style.setProperty('--font-size', '4.6vw');
-                    break;                    
+                    break;
                 default:
-                    document.documentElement.style.setProperty('--font-size', '5vw');                
+                    document.documentElement.style.setProperty('--font-size', '5vw');
             }
             this.ColorName = selectedItem.ColorName;
             this.ColorCode = selectedItem.ColorCode;
@@ -57,7 +60,7 @@ const app = Vue.createApp({
             this.isStopped = false;
             this.randomNumber = null;
         },
-        splitPoet: function() {
+        splitPoet: function () {
             return this.Poet.split(' ');
         }
     },
@@ -69,7 +72,7 @@ const app = Vue.createApp({
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i].split(',');
             if (row.length === 7) {
-                this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: "#"+row[5], ImagePath: "images/"+row[6]+".jpg" });
+                this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: "#" + row[5], ImagePath: "images/" + row[6] + ".jpg" });
             }
         }
         this.isDataLoaded = true;
