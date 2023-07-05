@@ -33,7 +33,7 @@
                     <p class="section-content">今日のあなたは</p>
                     <p>{{ Description }}</p><br>
                     <p class="section-content">ラッキーカラー</p>
-                    <p :style="{ backgroundColor: ColorCode }">{{ ColorName + ' (' + ColorCode + ')'}}</p>
+                    <p class="border-content" :style="{ backgroundColor: ColorCode }">{{ ColorName + ' (' + ColorCode + ')'}}</p>
                 </div>
                 <div class="image-content">
                     <img :src="ImagePath" alt="Image description"/>
