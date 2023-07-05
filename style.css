@@ -1,5 +1,6 @@
 :root {
     --font-size: 5vw;
+    --text-color: black;
 }
 
 body {
@@ -80,6 +81,7 @@ body {
 
 .border-content {
     border: 1px solid black;
+    color: var(--text-color);
 }
 
 button {

@@ -53,6 +53,7 @@ const app = Vue.createApp({
             }
             this.ColorName = selectedItem.ColorName;
             this.ColorCode = selectedItem.ColorCode;
+            adjustTextColor(this.ColorCode);
             this.ImagePath = selectedItem.ImagePath;
         },
         goHome() {
@@ -60,7 +61,7 @@ const app = Vue.createApp({
             this.isStopped = false;
             this.randomNumber = null;
         },
-        splitPoet: function () {
+        splitPoet() {
             return this.Poet.split(' ');
         }
     },
@@ -80,3 +81,24 @@ const app = Vue.createApp({
 });
 
 app.mount('#app');
+
+function getBrightness(hexColor) {
+    console.log(hexColor.toString());
+    const rgb = parseInt(hexColor.toString().slice(1), 16);   // 先頭の'#'を取り除き、16進数を10進数に変換
+    const r = (rgb >> 16) & 0xff;  // RGBのR値を取得
+    const g = (rgb >>  8) & 0xff;  // RGBのG値を取得
+    const b = (rgb >>  0) & 0xff;  // RGBのB値を取得
+
+    // 明るさを計算（ここでは単純にR,G,Bの平均値を取っていますが、より精度の高い計算方法も存在します）
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness;
+}
+
+function adjustTextColor(backgroundColor) {
+    const brightness = getBrightness(backgroundColor);
+    if (brightness < 128) {  // 背景が十分に暗い場合
+        document.documentElement.style.setProperty('--text-color', 'white');  // テキストの色を白に設定
+    } else {  // 背景が明るい場合
+        document.documentElement.style.setProperty('--text-color', 'black');  // テキストの色を黒に設定
+    }
+}
