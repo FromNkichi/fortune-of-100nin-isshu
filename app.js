@@ -2,7 +2,7 @@ const currentImplementedPoet = 16;
 const app = Vue.createApp({
     data() {
         return {
-            Title: 'ストップボタンで 1 首選ぼう',
+            Title: 'ストップボタンで一首選ぼう',
             stopTitle: '今日の百人一首',
             randomNumber: null,
             intervalId: null,
