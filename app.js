@@ -30,6 +30,16 @@ const app = Vue.createApp({
             this.Poet = selectedItem.Poet;
             this.Author = selectedItem.Author;
             this.Description = selectedItem.Description;
+            switch (true) {
+                case this.Description.length > 80:
+                    document.documentElement.style.setProperty('--font-size', '4vw');
+                    break;
+                case this.Description.length > 44:
+                    document.documentElement.style.setProperty('--font-size', '4.3vw');
+                    break;
+                default:
+                    document.documentElement.style.setProperty('--font-size', '5vw');                
+            }
             this.ColorName = selectedItem.ColorName;
             this.ColorCode = selectedItem.ColorCode;
             this.ImagePath = selectedItem.ImagePath;
@@ -43,6 +53,7 @@ const app = Vue.createApp({
             return this.Poet.split(' ');
         }
     },
+
     async mounted() {
         const response = await fetch('data.csv');
         const csvData = await response.text();
@@ -58,4 +69,3 @@ const app = Vue.createApp({
 });
 
 app.mount('#app');
-

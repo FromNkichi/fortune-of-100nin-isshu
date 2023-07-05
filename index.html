@@ -15,24 +15,24 @@
 <body>
     <div id="app" class="container">
         <template v-if="!isStarted && !isStopped">
-            <h1 class="vertical-text">今日の百人一首</h1>
+            <p class="title-content">今日の百人一首</p>
             <button @click="start" class="btn btn-primary">Start</button>
         </template>
         <template v-else-if="isStarted && !isStopped">
-            <h1>{{ Title }}</h1>
+            <p class="title-content">{{ Title }}</p>
             <!-- <img v-if="showImage" :src="ImagePath" alt="Your image"> -->
             <p v-if="randomNumber">{{ randomNumber }}</p>
             <button @click="stop" class="btn btn-danger">Stop</button>
         </template>
         <template v-else>
-            <div class="flex-container">
+            <!-- <div class="flex-container"> -->
                 <div class="text-content">
-                    <h1>{{ stopTitle }}</h1>        
+                    <p class="section-content">{{ stopTitle }}</p>        
                     <p v-for="(Poet, index) in splitPoet()" :key="index" :class="{'align-bottom': index === 1}">{{ Poet }}</p>
                     <p class="align-bottom">{{ Author }}</p><br>
-                    <p>今日のあなたは</p>
+                    <p class="section-content">今日のあなたは</p>
                     <p>{{ Description }}</p><br>
-                    <p>ラッキーカラー</p>
+                    <p class="section-content">ラッキーカラー</p>
                     <p :style="{ backgroundColor: ColorCode }">{{ ColorName + ' (' + ColorCode + ')'}}</p>
                 </div>
                 <div class="image-content">
@@ -41,7 +41,7 @@
                 <div class="button-content">
                     <button @click="goHome" class="btn btn-secondary">Go Home</button>
                 </div>
-            </div>
+            <!-- </div> -->
         </template>
     </div>
 
