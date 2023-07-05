@@ -16,12 +16,12 @@
     <div id="app" class="container">
         <template v-if="!isStarted && !isStopped">
             <p class="title-content">今日の百人一首</p>
-            <button @click="start" class="btn btn-primary">Start</button>
+            <button @click="start" class="btn btn-primary" v-bind:disabled="!isDataLoaded">Start</button>
         </template>
         <template v-else-if="isStarted && !isStopped">
             <p class="title-content">{{ Title }}</p>
-            <!-- <img v-if="showImage" :src="ImagePath" alt="Your image"> -->
-            <p v-if="randomNumber">{{ randomNumber }}</p>
+            <img v-if="showImage" :src="ImagePath" alt="Your image">
+            <!-- <p v-if="randomNumber">{{ randomNumber }}</p> -->
             <button @click="stop" class="btn btn-danger">Stop</button>
         </template>
         <template v-else>

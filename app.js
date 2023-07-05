@@ -1,3 +1,4 @@
+const currentImplementedPoet = 16;
 const app = Vue.createApp({
     data() {
         return {
@@ -7,7 +8,9 @@ const app = Vue.createApp({
             intervalId: null,
             isStarted: false,
             isStopped: false,
+            isDataLoaded: false,
             showImage: false,
+            ImagePath: null,
             items: []
         };
     },
@@ -18,15 +21,17 @@ const app = Vue.createApp({
             this.showImage = true;
             //this.randomNumber = 1;
             this.intervalId = setInterval(() => {
-                this.randomNumber = Math.floor(Math.random() * 16) + 1;
+                this.randomNumber = Math.floor(Math.random() * currentImplementedPoet) + 1;
+                this.ImagePath = this.items[this.randomNumber - 1].ImagePath;
             }, 100);
         },
         stop() {
+            clearInterval(this.intervalId);
             this.isStarted = false;
             this.isStopped = true;
             this.showImage = false;
+            this.randomNumber = Math.floor(Math.random() * currentImplementedPoet) + 1;
             const selectedItem = this.items.find((item) => item.No === this.randomNumber);
-            console.log(selectedItem);
             this.Poet = selectedItem.Poet;
             this.Author = selectedItem.Author;
             this.Description = selectedItem.Description;
@@ -67,8 +72,8 @@ const app = Vue.createApp({
                 this.items.push({ No: parseInt(row[0]), Poet: row[1], Author: row[2], Description: row[3], ColorName: row[4], ColorCode: "#"+row[5], ImagePath: "images/"+row[6]+".jpg" });
             }
         }
+        this.isDataLoaded = true;
     },
-
 });
 
 app.mount('#app');
