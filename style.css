@@ -17,8 +17,9 @@ body {
     max-width: 800px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    overflow: auto; /* enable scroll on container if necessary */
+    overflow: hidden; /* enable scroll on container if necessary */
   }
 
 .flex-container {
