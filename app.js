@@ -35,21 +35,25 @@ const app = Vue.createApp({
             this.Poet = selectedItem.Poet;
             this.Author = selectedItem.Author;
             this.Description = selectedItem.Description;
-            switch (true) {
-                case this.Description.length > 80:
-                    document.documentElement.style.setProperty('--font-size', '4vw');
-                    break;
-                case this.Description.length > 78:
-                    document.documentElement.style.setProperty('--font-size', '4.1vw');
-                    break;
-                case this.Description.length > 44:
-                    document.documentElement.style.setProperty('--font-size', '4.3vw');
-                    break;
-                case this.Description.length > 34:
-                    document.documentElement.style.setProperty('--font-size', '4.6vw');
-                    break;
-                default:
-                    document.documentElement.style.setProperty('--font-size', '5vw');
+            if (window.innerWidth < 768) {
+                switch (true) {
+                    case this.Description.length > 80:
+                        document.documentElement.style.setProperty('--font-size', '4vw');
+                        break;
+                    case this.Description.length > 78:
+                        document.documentElement.style.setProperty('--font-size', '4.1vw');
+                        break;
+                    case this.Description.length > 44:
+                        document.documentElement.style.setProperty('--font-size', '4.3vw');
+                        break;
+                    case this.Description.length > 34:
+                        document.documentElement.style.setProperty('--font-size', '4.6vw');
+                        break;
+                    default:
+                        document.documentElement.style.setProperty('--font-size', '5vw');
+                }    
+            } else {
+                document.documentElement.style.setProperty('--font-size', '16px');                
             }
             this.ColorName = selectedItem.ColorName;
             this.ColorCode = selectedItem.ColorCode;
