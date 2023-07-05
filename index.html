@@ -21,27 +21,24 @@
         <template v-else-if="isStarted && !isStopped">
             <p class="title-content">{{ Title }}</p>
             <img v-if="showImage" :src="ImagePath" alt="Your image">
-            <!-- <p v-if="randomNumber">{{ randomNumber }}</p> -->
             <button @click="stop" class="btn btn-danger">Stop</button>
         </template>
         <template v-else>
-            <!-- <div class="flex-container"> -->
-                <div class="text-content">
-                    <p class="section-content">{{ stopTitle }}</p>        
-                    <p v-for="(Poet, index) in splitPoet()" :key="index" :class="{'align-bottom': index === 1}">{{ Poet }}</p>
-                    <p class="align-bottom">{{ Author }}</p><br>
-                    <p class="section-content">今日のあなたは</p>
-                    <p>{{ Description }}</p><br>
-                    <p class="section-content">ラッキーカラー</p>
-                    <p class="border-content" :style="{ backgroundColor: ColorCode }">{{ ColorName + ' (' + ColorCode + ')'}}</p>
-                </div>
-                <div class="image-content">
-                    <img :src="ImagePath" alt="Image description"/>
-                </div>
-                <div class="button-content">
-                    <button @click="goHome" class="btn btn-secondary">Go Home</button>
-                </div>
-            <!-- </div> -->
+            <div class="text-content">
+                <p class="section-content">{{ stopTitle }}</p>
+                <p v-for="(Poet, index) in splitPoet()" :key="index" :class="{'align-bottom': index === 1}">{{ Poet }}</p>
+                <p class="align-bottom">{{ Author }}</p><br>
+                <p class="section-content">今日のあなたは</p>
+                <p>{{ Description }}</p><br>
+                <p class="section-content">ラッキーカラー</p>
+                <p class="border-content" :style="{ backgroundColor: ColorCode }">{{ ColorName + ' (' + ColorCode + ')'}}</p>
+            </div>
+            <div class="image-content">
+                <img :src="ImagePath" alt="Image description" />
+            </div>
+            <div class="button-content">
+                <button @click="goHome" class="btn btn-secondary">Go Home</button>
+            </div>
         </template>
     </div>
 

@@ -83,7 +83,6 @@ const app = Vue.createApp({
 app.mount('#app');
 
 function getBrightness(hexColor) {
-    console.log(hexColor.toString());
     const rgb = parseInt(hexColor.toString().slice(1), 16);   // 先頭の'#'を取り除き、16進数を10進数に変換
     const r = (rgb >> 16) & 0xff;  // RGBのR値を取得
     const g = (rgb >>  8) & 0xff;  // RGBのG値を取得

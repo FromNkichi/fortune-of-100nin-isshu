@@ -9,7 +9,8 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow: hidden; /* prevent scroll on body */
+    overflow: hidden;
+    /* prevent scroll on body */
 }
 
 .container {
@@ -20,8 +21,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* enable scroll on container if necessary */
-  }
+    overflow: hidden;
+    /* enable scroll on container if necessary */
+}
 
 .flex-container {
     display: flex;
@@ -91,9 +93,3 @@ button {
 p {
     font-size: var(--font-size);
 }
-
-/* @media (max-width: 767px) {
-    :root {
-        --font-size: 16px;
-    }
-} */
