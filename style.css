@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     margin: 0;
     overflow: hidden;
-    font-family: "UD Digi Kyokasho N-B";
+    font-family: "UD Digi Kyokasho N-R";
 }
 
 .container {
@@ -32,12 +32,13 @@ body {
 .section-content {
     font-weight: bold;
     font-size: calc(var(--font-size) * 1.3);
+    font-family: "UD Digi Kyokasho N-B";
 }
 
 .title-content {
     font-weight: bold;
     font-size: calc(var(--font-size) * 1.5);
-    font-family: "UD Digi Kyokasho N-R";
+    font-family: "UD Digi Kyokasho N-B";
 }
 
 .text-content {
