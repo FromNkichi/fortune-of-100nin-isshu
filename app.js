@@ -1,4 +1,4 @@
-const currentImplementedPoet = 16;
+const currentImplementedPoet = 50;
 const app = Vue.createApp({
     data() {
         return {
