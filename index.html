@@ -22,12 +22,13 @@
         <template v-if="!isStarted && !isStopped">
             <p class="title-content">今日の百人一首</p>
             <button @click="start" class="btn btn-primary" v-bind:disabled="!isDataLoaded">Start</button>
-            <p class="title-content">制作・宮崎大学百人一首研究会</p>
+            <p class="title-content"><font size="3">制作・宮崎大学百人一首研究会</font></p>
         </template>
         <template v-else-if="isStarted && !isStopped">
             <p class="title-content">{{ Title }}</p>
             <img v-if="showImage" :src="ImagePath" alt="Your image">
             <button @click="stop" class="btn btn-danger">Stop</button>
+            <p class="title-content"><font size="3">制作・宮崎大学百人一首研究会</font></p>
         </template>
         <template v-else>
             <div class="text-content">
@@ -45,6 +46,7 @@
             <div class="button-content">
                 <button @click="goHome" class="btn btn-secondary">Go Home</button>
             </div>
+            <p class="title-content"><font size="3">制作・宮崎大学百人一首研究会</font></p>
         </template>
     </div>
 
