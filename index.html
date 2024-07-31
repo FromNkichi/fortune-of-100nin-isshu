@@ -22,6 +22,7 @@
         <template v-if="!isStarted && !isStopped">
             <p class="title-content">今日の百人一首</p>
             <button @click="start" class="btn btn-primary" v-bind:disabled="!isDataLoaded">Start</button>
+            <p class="title-content">制作・宮崎大学百人一首研究会</p>
         </template>
         <template v-else-if="isStarted && !isStopped">
             <p class="title-content">{{ Title }}</p>
